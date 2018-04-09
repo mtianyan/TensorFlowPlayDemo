@@ -1,0 +1,1 @@
+timidity output.mid -Ow -o - | ffmpeg -i - -acodec libmp3lame -ab 64k output.mp3
