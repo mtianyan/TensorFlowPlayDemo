@@ -40,7 +40,6 @@ def get_notes():
         parts = instrument.partitionByInstrument(stream)
 
         if parts: # 如果有乐器部分， 取第一个乐器部分
-			print(patrs.parts.__method__)
             notes_to_parse = parts.parts[0].recurse()
         else:
             notes_to_parse = stream.flat.notes
