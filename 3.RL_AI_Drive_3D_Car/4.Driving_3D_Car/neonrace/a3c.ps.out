@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "worker.py", line 14, in <module>
+    import go_vncdriver
+ModuleNotFoundError: No module named 'go_vncdriver'

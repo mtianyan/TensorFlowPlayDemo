@@ -1,17 +1,19 @@
-# -*- coding: UTF-8 -*-
-
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 
 # 创建输入数据
-x = np.linspace(-7, 7, 180) # (-7, 7) 之间等间隔的 180 个点
+x = np.linspace(-7, 7, 180)  # (-7, 7) 之间等间隔的 180 个点
+
 
 # 激活函数的原始手工实现
+
+
 def sigmoid(inputs):
     # y = 1 / (1 + exp(-x)) np.exp相当于e的多少次方
     y = [1 / float(1 + np.exp(-x)) for x in inputs]
     return y
+
 
 def relu(inputs):
     # f(x) = max(0,x) x大于0时，函数值y就是x。x<0时函数值y就是0.
@@ -19,15 +21,19 @@ def relu(inputs):
     y = [x * (x > 0) for x in inputs]
     return y
 
+
 def tanh(inputs):
     # e的x次方-e的负x次方做分母。e的x次方+e的负x次方做分母
-    y = [(np.exp(x) - np.exp(-x)) / float(np.exp(x) - np.exp(-x)) for x in inputs]
+    y = [(np.exp(x) - np.exp(-x)) / float(np.exp(x) - np.exp(-x))
+         for x in inputs]
     return y
+
 
 def softplus(inputs):
     # y = log(1+e的x平方)
     y = [np.log(1 + np.exp(x)) for x in inputs]
     return y
+
 
 # 经过 TensorFlow 的激活函数处理的各个 Y 值
 y_sigmoid = tf.nn.sigmoid(x)
@@ -39,7 +45,8 @@ y_softplus = tf.nn.softplus(x)
 sess = tf.Session()
 
 # 运行run,得到四个返回值
-y_sigmoid, y_relu, y_tanh, y_softplus = sess.run([y_sigmoid, y_relu, y_tanh, y_softplus])
+y_sigmoid, y_relu, y_tanh, y_softplus = sess.run(
+    [y_sigmoid, y_relu, y_tanh, y_softplus])
 
 # 创建各个激活函数的图像
 plt.figure(1, figsize=(8, 6))

@@ -1,13 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from matplotlib.ticker import NullFormatter  # useful for `logit` scale
+from matplotlib.ticker import NullFormatter
 
-# Fixing random state for reproducibility
 # 为了重现结果，设置随机种子
-np.random.seed(19680801)
+np.random.seed(20180816)
 
-# make up some data in the interval ]0, 1[
+#
 y = np.random.normal(loc=0.5, scale=0.4, size=1000)
 y = y[(y > 0) & (y < 1)]
 y.sort()

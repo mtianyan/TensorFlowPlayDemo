@@ -12,6 +12,7 @@ import tensorflow as tf
 from utils import *
 from network import *
 
+
 # 以之前训练所得的最佳参数来生成音乐
 def generate():
     # 加载用于训练神经网络的音乐数据
@@ -35,6 +36,7 @@ def generate():
     # 用音乐数据生成 MIDI 文件，再转换成 MP3
     create_music(prediction)
 
+
 def prepare_sequences(notes, pitch_names, num_pitch):
     """
     为神经网络准备好供训练的序列
@@ -43,7 +45,7 @@ def prepare_sequences(notes, pitch_names, num_pitch):
     pitch_to_int = dict((pitch, number) for number, pitch in enumerate(pitch_names))
 
     sequence_length = 100
-    
+
     network_input = []
     output = []
 
@@ -62,6 +64,7 @@ def prepare_sequences(notes, pitch_names, num_pitch):
     normalized_input = normalized_input / float(num_pitch)
 
     return (network_input, normalized_input)
+
 
 def generate_notes(model, network_input, pitch_names, num_pitch):
     """
@@ -92,6 +95,7 @@ def generate_notes(model, network_input, pitch_names, num_pitch):
         pattern = pattern[1:len(pattern)]
 
     return prediction_output
+
 
 if __name__ == '__main__':
     generate()
